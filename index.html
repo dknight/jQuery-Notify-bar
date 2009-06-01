@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>jQuery notify bar</title>
+  </head>
+  <style type="text/css">
+  #greenDiv {
+    width:100%;
+    background-color:#cfc;
+    color:#051;
+    z-index:300;
+    text-align:center;
+    position:absolute;
+    top:0px;
+    left:0px;
+    padding:30px 0px;
+    font-family:Arial, serif;
+    font-size:18px;
+    display:none;
+  }
+  #errorDiv {
+    width:100%;
+    background-color:#fcc;
+    color:#510;
+    z-index:300;
+    text-align:center;
+    position:absolute;
+    top:0px;
+    left:0px;
+    padding:30px 0px;
+    font-family:Arial, serif;
+    font-size:18px;
+    display:none;
+  }
+
+  </style>
+  <body>
+    <div id="greenDiv"></div>
+    <div id="errorDiv"></div>
+    <h1>'Notify Bar' plugin</h1>
+    <p>
+      Simple plugin (basically it's not a plugin, but widget) to show notify bar
+      (like on Twitter's webpage).
+      It's very simple to use:
+    </p>
+    <pre>
+      <code>
+$(function () {
+  $.notifyBar({
+    html: "Thank you, your settings was updated!",
+    delay: 2500,
+    animationSpeed: "normal"
+  });  
+});
+      </code>
+    </pre>
+    <h3>$.notifyBar can pass next parameters:</h3>
+    <table border="1">
+      <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default</th>
+      </tr>
+      <tr>
+        <td>html</td>
+        <td>What text will be inside bar, can be HTML</td>
+        <td>String [optional]</td>
+        <td>"Your message here"</td>
+      </tr>
+      <tr>
+        <td>delay</td>
+        <td>How long bar will be delayed, doesn't count animation time.</td>
+        <td>Integer [optional]</td>
+        <td>2500</td>
+      </tr>
+      <tr>
+        <td>animationSpeed</td>
+        <td>How long this bar will be slided up and down</td>
+        <td>String | Integer [optional]</td>
+        <td>"normal"</td>
+      </tr>
+      <tr>
+        <td>jqObject</td>
+        <td>Own jquery object for notify bar</td>
+        <td>jQuery object [optional]</td>
+        <td>null</td>
+      </tr>
+    </table>
+    
+    <h3>Check different styles</h3>
+    <p>
+      Usually this bar appears on the success message, but anyway can be used everywhere.
+      <br />
+      Try it! <strong>↓</strong>
+    </p>
+    <button id="callGreen">Call success bar</button>
+    <button id="callError">Error bar</button>
+    <button id="common">Default style bar</button>
+    
+    
+    <p>
+      <a href="http://www.dmitri.me/blog/notify-bar">Project home</a> | 
+      <a href="http://www.dmitri.me/misc/notify/jquery.notifyBar.js">Download source</a>
+    </p>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-4197203-4");
+    pageTracker._trackPageview();
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="jquery.notifyBar.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      
+      $("#callGreen").click(function(){
+        $.notifyBar({
+          html: "Thank you, your settings was updated!",
+          delay: 2500,
+          animationSpeed: "normal",
+          jqObject: $("#greenDiv")
+        });
+      });
+      $("#common").click(function(){
+        $.notifyBar();
+      });
+      $("#callError").click(function(){
+        $.notifyBar({
+          html: "Some errors occured",
+          delay: 2500,
+          animationSpeed: "normal",
+          jqObject: $("#errorDiv")
+        });
+      });
+    });
+    
+    </script>
+    
+    
+  </body>
+</html>
