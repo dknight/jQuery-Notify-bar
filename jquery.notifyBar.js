@@ -6,7 +6,7 @@
 *  Licensed under the MIT license:
 *  http://www.opensource.org/licenses/mit-license.php
 *  
-*  Version: 1.0.2
+*  Version: 1.1
 *
 *  Project home:
 *  http://www.dmitri.me/blog/notify-bar
@@ -28,32 +28,33 @@ $.notifyBar = function(settings)
   this.html           = settings.html || "Your message here";
   
   //How long bar will be delayed, doesn't count animation time.
-  this.delay          = settings.delay || 2500;
+  this.delay          = settings.delay || 2000;
   
   //How long this bar will be slided up and down
-  this.animationSpeed = settings.animationSpeed || "normal";
+  this.animationSpeed = settings.animationSpeed || 200;
   
   //Use own jquery object usually DIV, or use default
   this.jqObject       = settings.jqObject;
 
   if( this.jqObject) {
     bar = this.jqObject;
+    this.html = bar.html();
   } else {
     bar = $("<div></div>")
                   //basic css rules
-                  .attr("id", "notifyBar")
+                  .attr("id", "__notifyBar")
                   .css("width", "100%")
                   .css("position", "fixed")
                   .css("top", "0px")
                   .css("left", "0px")
                   .css("z-index", "32768")
                   //additional css rules, which you can modify as you wish.
-                  .css("background-color", "#dfdfdf")
+                  .css("background-color", "#efefef")
                   .css("font-size", "18px")
                   .css("color", "#000")
                   .css("text-align", "center")
                   .css("font-family", "Arial, Helvetica, serif")
-                  .css("padding", "30px 0px")
+                  .css("padding", "20px 0px")
                   .css("border-bottom", "1px solid #bbb");
   }
   
@@ -72,8 +73,16 @@ $.notifyBar = function(settings)
     default:
       asTime = this.animationSpeed;
   }
-  $("body").prepend(bar);
+  if( bar != 'object'); {
+    $("body").prepend(bar);
+  }
   bar.slideDown(asTime);
-  setTimeout("$('#" + id + "').slideUp(" + asTime +");", this.delay + asTime);
+  
+  // If taken from DOM dot not remove just hide
+  if( bar.attr("id") == "__notifyBar") {
+    setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "').remove()});", this.delay + asTime);
+  } else {
+    setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "')});", this.delay + asTime);
+  }
 };
     
