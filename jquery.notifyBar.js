@@ -36,14 +36,15 @@ $.notifyBar = function(settings)
   notifyBarNS.jqObject       = settings.jqObject;
   
   //Set up own class
-  notifyBarNS.class          = settings.class || "";
+  notifyBarNS.cls          = settings.cls || "";
+  
   if( notifyBarNS.jqObject) {
     bar = notifyBarNS.jqObject;
     notifyBarNS.html = bar.html();
   } else {
     bar = $("<div></div>")
           .addClass("jquery-notify-bar")
-          .addClass(notifyBarNS.class)
+          .addClass(notifyBarNS.cls)
           .attr("id", "__notifyBar");
                   
   }
