@@ -1,66 +1,56 @@
 /*
 *  Notify Bar - jQuery plugin
 *
-*  Copyright (c) 2009 Dmitri Smirnov
+*  Copyright (c) 2009-2010 Dmitri Smirnov
 *
 *  Licensed under the MIT license:
 *  http://www.opensource.org/licenses/mit-license.php
 *  
-*  Version: 1.1
+*  Version: 1.2
 *
 *  Project home:
 *  http://www.dmitri.me/blog/notify-bar
 */
 
 /**
- *  param object
+ *  param Object
  */
 $.notifyBar = function(settings)
 {
-  var bar = {};
-  
-  this.shown = false;
+  var bar = notifyBarNS = {};
+  notifyBarNS.shown = false;
   
   if( !settings) {
     settings = {};
   }
   // HTML inside bar
-  this.html           = settings.html || "Your message here";
+  notifyBarNS.html           = settings.html || "Your message here";
   
   //How long bar will be delayed, doesn't count animation time.
-  this.delay          = settings.delay || 2000;
+  notifyBarNS.delay          = settings.delay || 2000;
   
-  //How long this bar will be slided up and down
-  this.animationSpeed = settings.animationSpeed || 200;
+  //How long notifyBarNS bar will be slided up and down
+  notifyBarNS.animationSpeed = settings.animationSpeed || 200;
   
   //Use own jquery object usually DIV, or use default
-  this.jqObject       = settings.jqObject;
-
-  if( this.jqObject) {
-    bar = this.jqObject;
-    this.html = bar.html();
+  notifyBarNS.jqObject       = settings.jqObject;
+  
+  //Set up own class
+  notifyBarNS.class          = settings.class || "";
+  if( notifyBarNS.jqObject) {
+    bar = notifyBarNS.jqObject;
+    notifyBarNS.html = bar.html();
   } else {
     bar = $("<div></div>")
-                  //basic css rules
-                  .attr("id", "__notifyBar")
-                  .css("width", "100%")
-                  .css("position", "fixed")
-                  .css("top", "0px")
-                  .css("left", "0px")
-                  .css("z-index", "32768")
-                  //additional css rules, which you can modify as you wish.
-                  .css("background-color", "#efefef")
-                  .css("font-size", "18px")
-                  .css("color", "#000")
-                  .css("text-align", "center")
-                  .css("font-family", "Arial, Helvetica, serif")
-                  .css("padding", "20px 0px")
-                  .css("border-bottom", "1px solid #bbb");
+          .addClass("jquery-notify-bar")
+          .addClass(notifyBarNS.class)
+          .attr("id", "__notifyBar");
+                  
   }
   
-  bar.html(this.html).hide();
+  bar.html(notifyBarNS.html).hide();
   var id =  bar.attr("id");
-  switch (this.animationSpeed) {
+  switch (notifyBarNS.animationSpeed) {
     case "slow":
       asTime = 600;
       break;
@@ -71,7 +61,7 @@ $.notifyBar = function(settings)
       asTime = 200;
       break;
     default:
-      asTime = this.animationSpeed;
+      asTime = notifyBarNS.animationSpeed;
   }
   if( bar != 'object'); {
     $("body").prepend(bar);
@@ -80,9 +70,9 @@ $.notifyBar = function(settings)
   
   // If taken from DOM dot not remove just hide
   if( bar.attr("id") == "__notifyBar") {
-    setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "').remove()});", this.delay + asTime);
+    setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "').remove()});", notifyBarNS.delay + asTime);
   } else {
-    setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "')});", this.delay + asTime);
+    setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "')});", notifyBarNS.delay + asTime);
   }
 };
     

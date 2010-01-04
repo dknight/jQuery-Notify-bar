@@ -4,41 +4,17 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>jQuery notify bar</title>
-  </head>
+    <link rel="stylesheet" href="jquery.notifyBar.css" type="text/css" media="screen"  />
   <style type="text/css">
-  #greenDiv {
-    width:100%;
-    background-color:#cfc;
-    color:#051;
-    z-index:300;
-    text-align:center;
-    position:fixed;
-    top:0px;
-    left:0px;
-    padding:30px 0px;
-    font-family:Arial, serif;
-    font-size:18px;
-    display:none;
+  .custom {
+    font-size:20px;
+    font-family: "Times New Roman", Times, serif;
+    text-transform:uppercase;
+    background:#fff url(http://www.dmitri.me/misc/jq-test-pattern.gif) repeat-x top center;
   }
-  #errorDiv {
-    width:100%;
-    background-color:#fcc;
-    color:#510;
-    z-index:300;
-    text-align:center;
-    position:fixed;
-    top:0px;
-    left:0px;
-    padding:30px 0px;
-    font-family:Arial, serif;
-    font-size:18px;
-    display:none;
-  }
-
   </style>
+  </head>
   <body>
-    <div id="greenDiv">Success</div>
-    <div id="errorDiv">Error</div>
     <h1>'Notify Bar' plugin</h1>
     <p>
       Simple plugin (basically it's not a plugin, but widget) to show notify bar
@@ -55,6 +31,10 @@ $(function () {
   });  
 });
       </code>
+    </pre>
+    and to your html page stylesheet:
+        <pre>
+      <code>&lt;link rel="stylesheet" href="jquery.notifyBar.css" type="text/css" media="screen"  /&gt;</code>
     </pre>
     <h3>$.notifyBar can pass next parameters:</h3>
     <table border="1">
@@ -88,6 +68,12 @@ $(function () {
         <td>jQuery object [optional]</td>
         <td>null</td>
       </tr>
+      <tr>
+        <td>class</td>
+        <td>You can set own CSS class for 'Notify bar'. There is too premade clasess "error" and "success"</td>
+        <td>String</td>
+        <td></td>
+      </tr>
     </table>
     
     <h3>Check different styles</h3>
@@ -96,14 +82,15 @@ $(function () {
       <br />
       Try it! <strong>↓</strong>
     </p>
-    <button id="callGreen">Call success bar</button>
-    <button id="callError">Error bar</button>
     <button id="common">Default style bar</button>
+    <button id="error">Error style bar</button>
+    <button id="success">Success style bar</button>
+    <button id="custom">Custom styling</button>
     
     
     <p>
       <a href="http://www.dmitri.me/blog/notify-bar">Project home</a> | 
-      <a href="http://www.dmitri.me/misc/notify/jquery.notifyBar.js">Download source</a>
+      <a href="http://github.com/dknight/jQuery-Notify-bar">download source</a>
     </p>
     <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -119,20 +106,36 @@ $(function () {
     <script type="text/javascript">
     $(function() {
       
+      $.notifyBar({ html: "This is 'Notify bar'!" });
+      
       $("#callGreen").click(function(){
         $.notifyBar({
           html: "Thank you, your settings was updated!",
           jqObject: $("#greenDiv")
         });
       });
-      $("#common").click(function(){
-        $.notifyBar();
-      });
+      
       $("#callError").click(function(){
         $.notifyBar({
           jqObject: $("#errorDiv")
         });
       });
+      
+      
+      $("#common").click(function(){
+        $.notifyBar({});
+      });
+      $("#error").click(function(){
+        $.notifyBar({ class: "error", html: "Error occurred!" });
+      });
+      $("#success").click(function(){
+        $.notifyBar({ class: "success", html: "Your data has been changed!" });
+      });
+      $("#custom").click(function(){
+        $.notifyBar({ class: "custom", html: "Your data has been changed!" });
+      });
+      
+      
     });
     
     </script>
