@@ -34,3 +34,8 @@
   color:#060;
   background-color:#BBFFB6;
 }
+.notify-bar-close {
+  position:absolute;
+  left:95%;
+  font-size:11px;
+}

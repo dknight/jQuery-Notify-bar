@@ -6,7 +6,7 @@
 * Licensed under the MIT license:
 * http://www.opensource.org/licenses/mit-license.php
 *
-* Version: 1.2.1
+* Version: 1.2.2
 *
 * Project home:
 * http://www.dmitri.me/blog/notify-bar
@@ -16,9 +16,9 @@
 * param Object
 */
 jQuery.notifyBar = function(settings) {
- 
+  
   (function($) {
-   
+    
     var bar = notifyBarNS = {};
     notifyBarNS.shown = false;
      
@@ -39,17 +39,20 @@ jQuery.notifyBar = function(settings) {
      
     //Set up own class
     notifyBarNS.cls = settings.cls || "";
-     
+    
+    //close button
+    notifyBarNS.close = settings.close || false;
+    
     if( notifyBarNS.jqObject) {
       bar = notifyBarNS.jqObject;
       notifyBarNS.html = bar.html();
     } else {
-      bar = $("<div></div>")
+      bar = jQuery("<div></div>")
       .addClass("jquery-notify-bar")
       .addClass(notifyBarNS.cls)
       .attr("id", "__notifyBar");
     }
-     
+         
     bar.html(notifyBarNS.html).hide();
     var id = bar.attr("id");
     switch (notifyBarNS.animationSpeed) {
@@ -66,15 +69,29 @@ jQuery.notifyBar = function(settings) {
       asTime = notifyBarNS.animationSpeed;
     }
     if( bar != 'object'); {
-      $("body").prepend(bar);
+      jQuery("body").prepend(bar);
     }
+    
+    // Style close button in CSS file
+    if( notifyBarNS.close) {
+      bar.append(jQuery("<a href='#' class='notify-bar-close'>Close [X]</a>"));
+      jQuery(".notify-bar-close").click(function() {
+        if( bar.attr("id") == "__notifyBar") {
+          jQuery("#" + id).slideUp(asTime, function() { jQuery("#" + id).remove() });
+        } else {
+          jQuery("#" + id).slideUp(asTime);
+        }
+        return false;
+      });
+    }
+    
     bar.slideDown(asTime);
      
     // If taken from DOM dot not remove just hide
     if( bar.attr("id") == "__notifyBar") {
-      setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "').remove()});", notifyBarNS.delay + asTime);
+      setTimeout("jQuery('#" + id + "').slideUp(" + asTime +", function() {jQuery('#" + id + "').remove()});", notifyBarNS.delay + asTime);
     } else {
-      setTimeout("$('#" + id + "').slideUp(" + asTime +", function() {$('#" + id + "')});", notifyBarNS.delay + asTime);
+      setTimeout("jQuery('#" + id + "').slideUp(" + asTime +", function() {jQuery('#" + id + "')});", notifyBarNS.delay + asTime);
     }
- 
+
 })(jQuery) };
