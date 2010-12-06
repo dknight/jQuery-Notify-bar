@@ -85,25 +85,25 @@ jQuery.notifyBar = function(settings) {
       });
     }
     
-	// Check if we've got any visible bars and if we have, slide them up before showing the new one
-	if($('.jquery-notify-bar:visible').length > 0) {
-		$('.jquery-notify-bar:visible').stop().slideUp(asTime, function() {
-			bar.stop().slideDown(asTime);
-		});
-	} else {
-		bar.slideDown(asTime);
-	}
-	
-	// Allow the user to click on the bar to close it
-	bar.click(function() {
-		$(this).slideUp(asTime);
-	})
+  // Check if we've got any visible bars and if we have, slide them up before showing the new one
+  if($('.jquery-notify-bar:visible').length > 0) {
+    $('.jquery-notify-bar:visible').stop().slideUp(asTime, function() {
+      bar.stop().slideDown(asTime);
+    });
+  } else {
+    bar.slideDown(asTime);
+  }
+  
+  // Allow the user to click on the bar to close it
+  bar.click(function() {
+    $(this).slideUp(asTime);
+  })
      
-    // If taken from DOM dot not remove just hide
-    if( bar.attr("id") == "__notifyBar") {
-      setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "').remove()});", notifyBarNS.delay + asTime);
-    } else {
-      setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "')});", notifyBarNS.delay + asTime);
-    }
+  // If taken from DOM dot not remove just hide
+  if( bar.attr("id") == "__notifyBar") {
+    setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "').remove()});", notifyBarNS.delay + asTime);
+  } else {
+    setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "')});", notifyBarNS.delay + asTime);
+  }
 
 })(jQuery) };
