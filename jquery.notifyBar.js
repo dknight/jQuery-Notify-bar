@@ -40,8 +40,11 @@ jQuery.notifyBar = function(settings) {
     //Set up own class
     notifyBarNS.cls = settings.cls || "";
     
-    //close button
-    notifyBarNS.close = settings.close || false;
+	//close button if injected as true the delay is not needed until the hideDelayedOnCloseBtnVisible is set to true
+	notifyBarNS.close = settings.close || false;
+
+	//hide the bar even if close btn option is set to true 
+	notifyBarNS.hideDelayedOnCloseBtnVisible = settings.hideDelayedOnCloseBtnVisible || false;
     
     if( notifyBarNS.jqObject) {
       bar = notifyBarNS.jqObject;
@@ -99,11 +102,14 @@ jQuery.notifyBar = function(settings) {
     $(this).slideUp(asTime);
   })
      
-  // If taken from DOM dot not remove just hide
-  if( bar.attr("id") == "__notifyBar") {
-    setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "').remove()});", notifyBarNS.delay + asTime);
-  } else {
-    setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "')});", notifyBarNS.delay + asTime);
-  }
-
+  // check if we have to autoHide depending on close btn visbil and hideDelayedOnCloseBtnVisible
+  if (!notifyBarNS.close || (notifyBarNS.close && notifyBarNS.hideDelayedOnCloseBtnVisible)) {
+	   // If taken from DOM dot not remove just hide
+	  if( bar.attr("id") == "__notifyBar") {
+		setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "').remove()});", notifyBarNS.delay + asTime);
+	  } else {
+		setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "')});", notifyBarNS.delay + asTime);
+	  }
+	}	
+	  
 })(jQuery) };
