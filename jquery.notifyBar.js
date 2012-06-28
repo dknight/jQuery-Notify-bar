@@ -43,8 +43,8 @@ jQuery.notifyBar = function(settings) {
 	//close button if injected as true the delay is not needed until the hideDelayedOnCloseBtnVisible is set to true
 	notifyBarNS.close = settings.close || false;
 
-	//hide the bar even if close btn option is set to true 
-	notifyBarNS.hideDelayedOnCloseBtnVisible = settings.hideDelayedOnCloseBtnVisible || false;
+    //hide the bar even if close btn option is set to true 
+    notifyBarNS.respectHideDelay = settings.respectHideDelay == undefined ? true : settings.respectHideDelay;
     
     if( notifyBarNS.jqObject) {
       bar = notifyBarNS.jqObject;
@@ -102,8 +102,8 @@ jQuery.notifyBar = function(settings) {
     $(this).slideUp(asTime);
   })
      
-  // check if we have to autoHide depending on close btn visbil and hideDelayedOnCloseBtnVisible
-  if (!notifyBarNS.close || (notifyBarNS.close && notifyBarNS.hideDelayedOnCloseBtnVisible)) {
+    // If taken from DOM dot not remove just hide
+    if (!notifyBarNS.close || (notifyBarNS.close && notifyBarNS.respectHideDelay)) {
 	   // If taken from DOM dot not remove just hide
 	  if( bar.attr("id") == "__notifyBar") {
 		setTimeout("jQuery('#" + id + "').stop().slideUp(" + asTime +", function() {jQuery('#" + id + "').remove()});", notifyBarNS.delay + asTime);
