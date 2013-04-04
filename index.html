@@ -2,14 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>jQuery 'Notify bar'</title>
+<title>jQuery Notify bar</title>
 <link rel="stylesheet" href="jquery.notifyBar.css" type="text/css" media="screen"  />
 <style type="text/css">
 .custom {
   font-size:20px;
+  color:white;
   font-family: "Times New Roman", Times, serif;
+  font-style:italic;
   text-transform:uppercase;
-  background:#fff url(http://www.dmitri.me/misc/jq-test-pattern.gif) repeat-x top center;
+  background:black url("bg.png") repeat-x top center;
 }
 </style>
 <!--[if lte IE 6]>
@@ -45,51 +47,69 @@ $(function () {
     <pre>
 <code>&lt;link rel="stylesheet" href="jquery.notifyBar.css" type="text/css" media="screen"  /&gt;</code>
     </pre>
-    <h3>$.notifyBar can pass next parameters:</h3>
-    <table border="1">
-      <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default</th>
-      </tr>
-      <tr>
-        <td>html</td>
-        <td>What text will be inside bar, can be HTML</td>
-        <td>String [optional]</td>
-        <td>"Your message here"</td>
-      </tr>
-      <tr>
-        <td>delay</td>
-        <td>How long bar will be delayed, doesn't count animation time.</td>
-        <td>Integer [optional]</td>
-        <td>2000</td>
-      </tr>
-      <tr>
-        <td>animationSpeed</td>
-        <td>How long this bar will be slided up and down</td>
-        <td>String | Integer [optional]</td>
-        <td>"normal"</td>
-      </tr>
-      <tr>
-        <td>jqObject</td>
-        <td>Own jquery object for notify bar</td>
-        <td>jQuery object [optional]</td>
-        <td>null</td>
-      </tr>
-      <tr>
-        <td>cls</td>
-        <td>You can set own CSS class for 'Notify bar'. There is too premade clasess "error" and "success"</td>
-        <td>String</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>close</td>
-        <td>If set to true close button will be displayed</td>
-        <td>Boolean</td>
-        <td>false</td>
-      </tr>
-    </table>
+    <h3>$.notifyBar can get next parameters:</h3>
+<table border="1">
+  <tr>
+    <th>Parameter</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td>html</td>
+    <td>What text will be inside bar, can be HTML</td>
+    <td>String [optional]</td>
+    <td>"Your message here"</td>
+  </tr>
+  <tr>
+    <td>delay</td>
+    <td>How long bar will be delayed, doesn't count animation time.</td>
+    <td>Integer [optional]</td>
+    <td>2000</td>
+  </tr>
+  <tr>
+    <td>animationSpeed</td>
+    <td>How long this bar will be slided up and down</td>
+    <td>String | Integer [optional]</td>
+    <td>"normal"</td>
+  </tr>
+  <tr>
+    <td>jqObject</td>
+    <td>Own jquery object for notify bar</td>
+    <td>jQuery object [optional]</td>
+    <td>null</td>
+  </tr>
+  <tr>
+    <td>cssClass</td>
+    <td>You can set own CSS class for 'Notify bar'. There is too premade clasess "error" and "success"</td>
+    <td>String</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>close</td>
+    <td>If set to true close button will be displayed</td>
+    <td>Boolean</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>closeText</td>
+    <td>Sets the text to close link.</td>
+    <td>String</td>
+    <td>Close [X]</td>
+  </tr>
+  <tr>
+    <td>closeOnClick</td>
+    <td>If enabled, user can hide notify bar just by click on it.</td>
+    <td>Boolean</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>closeOnOver</td>
+    <td>If enabled, user can hide notify bar just by moving mouse cursor on it (suitable for really lazy people).</td>
+    <td>Boolean</td>
+    <td>false</td>
+  </tr>
+</table>
     
     <h3>Check different styles</h3>
     <p>
@@ -97,19 +117,20 @@ $(function () {
       <br />
       Try it! <strong>↓</strong>
     </p>
-    <button id="common">Default style bar</button>
-    <button id="error">Error style bar</button>
-    <button id="success">Success style bar</button>
+    <button id="common">Default style</button>
+    <button id="error">Error style</button>
+    <button id="success">Success style</button>
+    <button id="warning">Warning style</button>
     <button id="custom">Custom styling</button>
     <button id="close">With close button</button>
     
     
     <p>
-      <a href="http://www.dmitri.me/blog/notify-bar">Project home</a> | 
+      <a href="http://www.whoop.ee/">Project home (isn't ready yet)</a> | 
       <a href="http://github.com/dknight/jQuery-Notify-bar">download source</a>
     </p>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" src="jquery.notifyBar.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.notifyBar.js"></script>
     <script type="text/javascript">
     $(function() {
       
@@ -129,20 +150,23 @@ $(function () {
       });
       
       
-      $("#common").click(function(){
+      $("#common").click(function () {
         $.notifyBar({});
       });
-      $("#error").click(function(){
-        $.notifyBar({ cls: "error", html: "Error occurred!" });
+      $("#error").click(function () {
+        $.notifyBar({ cssClass: "error", html: "Error occurred!" });
       });
-      $("#success").click(function(){
-        $.notifyBar({ cls: "success", html: "Your data has been changed!" });
+      $("#success").click(function () {
+        $.notifyBar({ cssClass: "success", html: "Your data has been changed!" });
       });
-      $("#custom").click(function(){
-        $.notifyBar({ cls: "custom", html: "Your data has been changed!" });
+      $("#warning").click(function() {
+        $.notifyBar({ cssClass: "warning", html: "Settings aren't changed!" });
+      })
+      $("#custom").click(function () {
+        $.notifyBar({ cssClass: "custom", html: "Your data has been changed!" });
       });
-      $("#close").click(function(){
-        $.notifyBar({ html: "Click 'close' to hide notify bar", close: true, delay: 1000000 });
+      $("#close").click(function ( ){
+        $.notifyBar({ html: "Click 'close' to hide notify bar", close: true, delay: 1000000, closeOnClick: false });
       });
       
       
