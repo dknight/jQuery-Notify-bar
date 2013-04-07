@@ -18,7 +18,7 @@ and to your html page stylesheet:
 <link rel="stylesheet" href="jquery.notifyBar.css">
 </code></pre>
 
-## $.notifyBar can pass next parameters:
+## Options
 
 <table border="1">
   <tr>
@@ -55,7 +55,7 @@ and to your html page stylesheet:
     <td>cssClass</td>
     <td>You can set own CSS class for 'Notify bar'. There is too premade clasess "error" and "success"</td>
     <td>String</td>
-    <td></td>
+    <td>""</td>
   </tr>
   <tr>
     <td>close</td>
@@ -83,6 +83,6 @@ and to your html page stylesheet:
   </tr>
 </table>
 
-Please visit [the project page](http://www.whoop.ee/ "the project page") for feedback and other details.
+Please visit [the project page](http://www.whoop.ee/posts/2013-04-05-resurrection-of-jquery-notify-bar/ "the project page") for feedback and other details.
 Isn't ready yet, but soon will be.
 

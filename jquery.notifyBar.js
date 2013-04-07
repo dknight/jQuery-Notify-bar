@@ -9,30 +9,30 @@
 * Version: 1.3
 *
 * Project home:
-* http://www.whoop.ee/ (Isn't ready yet)
+* http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/
 */
  
 /**
  * param Object
  */
-(function ($) {
+;(function ($) {
 
     $.notifyBar = function(options) {
 
-        var bar = settings = {};
+        var bar = {};
         var rand = parseInt(Math.random() * 100000000);
 
         var settings = $.extend({
             html           : 'Your message here',
             delay          : 2000,
             animationSpeed : 200,
+            cssClass       : "",
             jqObject       : "",
             close          : false,
             closeText      : 'Close [X]',
             closeOnClick   : true,
             closeOnOver    : false
         }, options);
-       
 
         if( settings.jqObject) {
             bar = settings.jqObject;
@@ -73,9 +73,11 @@
             bar.append($("<a href='#' class='notify-bar-close'>" + settings.closeText + "</a>"));
             $(".notify-bar-close").click(function() {
                 if( bar.attr("id") == "__notifyBar" + rand) {
-                    $("#" + id).slideUp(asTime, function() { $("#" + id).remove() });
+                   bar.slideUp(asTime, function() {
+                        $(this).remove();
+                    });
                 } else {
-                    $("#" + id).slideUp(asTime);
+                    bar.slideUp(asTime);
                 }
                 return false;
             });
@@ -112,13 +114,13 @@
         // If taken from DOM dot not remove just hide
         if( bar.attr("id") == "__notifyBar" + rand) {
             setTimeout(function () {
-                $("#" + id).stop().slideUp(asTime, function () {
+                bar.stop().slideUp(asTime, function () {
                     $(this).remove();
                 });
             }, settings.delay + asTime);
         } else {
             setTimeout(function () {
-                $("#" + id).stop().slideUp(asTime, function () {
+                bar.stop().slideUp(asTime, function () {
                     $(this).remove();
                 });
             }, settings.delay + asTime);

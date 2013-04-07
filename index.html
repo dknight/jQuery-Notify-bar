@@ -14,19 +14,11 @@
   background:black url("bg.png") repeat-x top center;
 }
 </style>
-<!--[if lte IE 6]>
-<style type="text/css">
-img {
-behavior:url("/inc/iepngfix.htc");
-}
-</style>
-<link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" />
-<![endif]-->
 </head>
 
 <body>
 
-<h1>'Notify Bar' plugin</h1>
+<h1>Notify Bar plugin</h1>
     <p>
       Simple plugin (basically it's not a plugin, but widget) to show notify bar
       (like on Twitter's webpage).
@@ -47,7 +39,7 @@ $(function () {
     <pre>
 <code>&lt;link rel="stylesheet" href="jquery.notifyBar.css" type="text/css" media="screen"  /&gt;</code>
     </pre>
-    <h3>$.notifyBar can get next parameters:</h3>
+    <h3>Settings</h3>
 <table border="1">
   <tr>
     <th>Parameter</th>
@@ -83,7 +75,7 @@ $(function () {
     <td>cssClass</td>
     <td>You can set own CSS class for 'Notify bar'. There is too premade clasess "error" and "success"</td>
     <td>String</td>
-    <td></td>
+    <td>""</td>
   </tr>
   <tr>
     <td>close</td>
@@ -126,7 +118,9 @@ $(function () {
     
     
     <p>
-      <a href="http://www.whoop.ee/">Project home (isn't ready yet)</a> | 
+      <a href="http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/">
+        Project home
+      </a>
       <a href="http://github.com/dknight/jQuery-Notify-bar">download source</a>
     </p>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -134,7 +128,9 @@ $(function () {
     <script type="text/javascript">
     $(function() {
       
-      $.notifyBar({ html: "This is 'Notify bar'!" });
+      $.notifyBar({
+        html: "This is 'Notify bar'!"
+      });
       
       $("#callGreen").click(function(){
         $.notifyBar({
