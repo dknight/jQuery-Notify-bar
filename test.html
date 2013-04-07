@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Notify bar</title>
+<link rel="stylesheet" href="jquery.notifyBar.css">
+<style type="text/css">
+.custom {
+  font-size:20px;
+  color:white;
+  font-family: "Times New Roman", Times, serif;
+  font-style:italic;
+  text-transform:uppercase;
+  background:black url("bg.png") repeat-x top center;
+}
+button {
+  display: inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Notify Bar test page</h1>
+
+    <p>
+      <a href="http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/">
+        Project home
+      </a>
+      &nbsp;
+      <a href="http://github.com/dknight/jQuery-Notify-bar">Download the source</a>
+    </p>
+ 
+    <div>
+      Default style with no message<br>
+      <button id="common">Test</button>
+    </div>
+    <p>
+      Error style<br>
+      <button id="error">Test</button>
+    </p>
+    <p>
+      Success style<br>
+      <button id="success">Test</button>
+    </p>
+    <p>
+      Warning style<br>
+      <button id="warning">Test</button>
+    </p>
+    <p>
+      Custom style<br>
+      <button id="custom">Test</button>
+    </p>
+    <p>
+      Close button<br>
+      <button id="close">Test</button>
+    </p>
+    <p>
+      Test events<br>
+      <button id="events">Test</button>
+      <div id="onBeforeShow"></div>
+      <div id="onShow"></div>
+      <div id="onBeforeHide"></div>
+      <div id="onHide"></div>
+    </p>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="jquery.notifyBar.js"></script>
+    <script>
+    $(function() {
+      
+      $.notifyBar({
+        html: "Autostart"
+      });
+      
+      $("#common").click(function () {
+        $.notifyBar();
+      });
+      $("#error").click(function () {
+        $.notifyBar({ cssClass: "error", html: "Error occurred!" });
+      });
+      $("#success").click(function () {
+        $.notifyBar({ cssClass: "success", html: "Your data has been changed!" });
+      });
+      $("#warning").click(function() {
+        $.notifyBar({ cssClass: "warning", html: "Settings aren't changed!" });
+      })
+      $("#custom").click(function () {
+        $.notifyBar({ cssClass: "custom", html: "Your data has been changed!" });
+      });
+      $("#close").click(function () {
+        $.notifyBar({ html: "Click 'close' to hide notify bar", close: true, closeOnClick: false });
+      });
+      $("#events").click(function () {
+          $.notifyBar({
+              html: "Test events",
+              onBeforeShow: function () {
+                  $("#onBeforeShow").html("onBeforeShow - ok");
+              },
+              onShow: function () {
+                  $("#onShow").html("onShow - ok");
+              },
+              onBeforeHide: function () {
+                  $("#onBeforeHide").html("onBeforeHide - ok");
+              },
+              onHide: function () {
+                  $("#onHide").html("onHide - ok");
+              }
+          });
+      });
+      
+    });
+    
+    </script>
+</body>
+</html>

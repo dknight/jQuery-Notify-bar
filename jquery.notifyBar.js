@@ -12,12 +12,44 @@
 * http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/
 */
  
-/**
- * param Object
- */
 ;(function ($) {
 
     $.notifyBar = function(options) {
+
+        // Use these methods as private.
+        this.fn.showNB = function () {
+            if(typeof settings.onBeforeShow == 'function') {
+                settings.onBeforeShow.call();
+            }
+            $(this).stop().slideDown(asTime, function () {
+                if(typeof settings.onShow == 'function') {
+                    settings.onShow.call();
+                }
+            });
+        }
+
+        this.fn.hideNB = function (delayed) {
+            if(typeof settings.onBeforeHide == 'function') {
+                settings.onBeforeHide.call();
+            }
+            $(this).stop().slideUp(asTime, function () {
+                if( bar.attr("id") == "__notifyBar" + rand) {
+                    $(this).slideUp(asTime, function() {
+                        $(this).remove();
+                        if(typeof settings.onHide == 'function') {
+                            settings.onHide.call();
+                        }
+                    });
+                } else {
+                    $(this).slideUp(asTime, function () {
+                        if(typeof settings.onHide == 'function') {
+                            settings.onHide.call();
+                        }
+                    });
+
+                }
+            });
+        }
 
         var bar = {};
         var rand = parseInt(Math.random() * 100000000);
@@ -31,7 +63,11 @@
             close          : false,
             closeText      : 'Close [X]',
             closeOnClick   : true,
-            closeOnOver    : false
+            closeOnOver    : false,
+            onBeforeShow   : null,
+            onShow         : null,
+            onBeforeHide   : null,
+            onHide         : null
         }, options);
 
         if( settings.jqObject) {
@@ -70,16 +106,14 @@
         
         // Style close button in CSS file
         if(settings.close) {
+
+            // If close settings is true. Set delay to one billion seconds.
+            // It'a about 31 years - mre than enough for cases when notify bar is used.
+            settings.delay = Math.pow(10, 9);
             bar.append($("<a href='#' class='notify-bar-close'>" + settings.closeText + "</a>"));
-            $(".notify-bar-close").click(function() {
-                if( bar.attr("id") == "__notifyBar" + rand) {
-                   bar.slideUp(asTime, function() {
-                        $(this).remove();
-                    });
-                } else {
-                    bar.slideUp(asTime);
-                }
-                return false;
+            $(".notify-bar-close").click(function(event) {
+                event.preventDefault();
+                bar.hideNB();
             });
         }
             
@@ -87,43 +121,29 @@
         // slide them up before showing the new one
         if($('.jquery-notify-bar:visible').length > 0) {
             $('.jquery-notify-bar:visible').stop().slideUp(asTime, function() {
-                bar.stop().slideDown(asTime);
+                bar.showNB();
             });
         } else {
-            bar.slideDown(asTime);
+            bar.showNB();
         }
         
         // Allow the user to click on the bar to close it
         if(settings.closeOnClick) {
             bar.click(function () {
-                $(this).slideUp(asTime, function () {
-                    $(this).remove();
-                });
+                bar.hideNB();
             });
         }
 
         // Allow the user to move mouse on the bar to close it
         if(settings.closeOnOver) {
             bar.mouseover(function () {
-                 $(this).slideUp(asTime, function () {
-                    $(this).remove();
-                });
+                bar.hideNB();
             });
         }
              
-        // If taken from DOM dot not remove just hide
-        if( bar.attr("id") == "__notifyBar" + rand) {
-            setTimeout(function () {
-                bar.stop().slideUp(asTime, function () {
-                    $(this).remove();
-                });
-            }, settings.delay + asTime);
-        } else {
-            setTimeout(function () {
-                bar.stop().slideUp(asTime, function () {
-                    $(this).remove();
-                });
-            }, settings.delay + asTime);
-        }
+        setTimeout(function () {
+            bar.hideNB(settings.delay);
+        }, settings.delay + asTime);
+
     };
 })( jQuery );
