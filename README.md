@@ -68,7 +68,7 @@ and to your html page stylesheet:
     <td><strong>closeText</strong></td>
     <td>Sets the text to close button.</td>
     <td>String</td>
-    <td>Close [X]</td>
+    <td>"Close [X]"</td>
   </tr>
   <tr>
     <td><strong>closeOnClick</strong></td>
