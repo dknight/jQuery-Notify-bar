@@ -20,66 +20,91 @@ and to your html page stylesheet:
 
 ## Options
 
-<table border="1">
+<table class="table1">
   <tr>
-    <th>Parameter</th>
+    <th>Option</th>
     <th>Description</th>
     <th>Type</th>
     <th>Default</th>
   </tr>
   <tr>
-    <td>html</td>
-    <td>What text will be inside bar, can be HTML</td>
+    <td><strong>html</strong></td>
+    <td>What text will be inside bar. Can be HTML or just text.</td>
     <td>String [optional]</td>
     <td>"Your message here"</td>
   </tr>
   <tr>
-    <td>delay</td>
+    <td><strong>delay</strong></td>
     <td>How long bar will be delayed, doesn't count animation time.</td>
     <td>Integer [optional]</td>
     <td>2000</td>
   </tr>
   <tr>
-    <td>animationSpeed</td>
-    <td>How long this bar will be slided up and down</td>
-    <td>String | Integer [optional]</td>
+    <td><strong>animationSpeed</strong></td>
+    <td>How long this bar will be slided up and down.</td>
+    <td>String | Integer</td>
     <td>"normal"</td>
   </tr>
   <tr>
-    <td>jqObject</td>
-    <td>Own jquery object for notify bar</td>
+    <td><strong>jqObject</strong></td>
+    <td>Custom jQuery object for notify bar.</td>
     <td>jQuery object [optional]</td>
     <td>null</td>
   </tr>
   <tr>
-    <td>cssClass</td>
-    <td>You can set own CSS class for 'Notify bar'. There is too premade clasess "error" and "success"</td>
+    <td><strong>cssClass</strong></td>
+    <td>You can define own CSS class for Notify bar.
+        There are too premade classes "error", "warning" and "success".</td>
     <td>String</td>
     <td>""</td>
   </tr>
   <tr>
-    <td>close</td>
-    <td>If set to true close button will be displayed</td>
+    <td><strong>close</strong></td>
+    <td>If set to true close button will be displayed.</td>
     <td>Boolean</td>
     <td>false</td>
   </tr>
   <tr>
-    <td>closeText</td>
-    <td>Sets the text to close link.</td>
+    <td><strong>closeText</strong></td>
+    <td>Sets the text to close button.</td>
     <td>String</td>
     <td>Close [X]</td>
   </tr>
   <tr>
-    <td>closeOnClick</td>
+    <td><strong>closeOnClick</strong></td>
     <td>If enabled, user can hide notify bar just by click on it.</td>
     <td>Boolean</td>
     <td>true</td>
   </tr>
   <tr>
-    <td>closeOnOver</td>
+    <td><strong>closeOnOver</strong></td>
     <td>If enabled, user can hide notify bar just by moving mouse cursor on it (suitable for really lazy people).</td>
     <td>Boolean</td>
     <td>false</td>
+  </tr>
+  <tr>
+    <td><strong>onBeforeShow</strong></td>
+    <td>Callback on before show.</td>
+    <td>function</td>
+    <td>null</td>
+  </tr>
+  <tr>
+    <td><strong>onShow</strong></td>
+    <td>Callback on show.</td>
+    <td>function</td>
+    <td>null</td>
+  </tr>
+  <tr>
+    <td><strong>onBeforeHide</strong></td>
+    <td>Callback on before hide.</td>
+    <td>function</td>
+    <td>null</td>
+  </tr>
+  <tr>
+    <td><strong>onHide</strong></td>
+    <td>Callback on hide.</td>
+    <td>function</td>
+    <td>null</td>
   </tr>
 </table>
 
