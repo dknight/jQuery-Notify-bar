@@ -15,7 +15,7 @@ $(function () {
 and to your html page stylesheet:
 
 <pre><code>
-<link rel="stylesheet" href="jquery.notifyBar.css">
+&lt;link rel="stylesheet" href="jquery.notifyBar.css"&gt;
 </code></pre>
 
 ## Options
