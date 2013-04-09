@@ -2,8 +2,7 @@
 
 Simple plugin (basically it's not a plugin, but widget) to show notify bar (like on Twitter's webpage). It's very simple to use:
 
-<pre><code>
-$(function () {
+<pre><code>$(function () {
   $.notifyBar({
     html: "Thank you, your settings were updated!",
     delay: 2000,
@@ -14,8 +13,7 @@ $(function () {
 
 and to your html page stylesheet:
 
-<pre><code>
-&lt;link rel="stylesheet" href="jquery.notifyBar.css"&gt;
+<pre><code>&lt;link rel="stylesheet" href="jquery.notifyBar.css"&gt;
 </code></pre>
 
 ## Options
