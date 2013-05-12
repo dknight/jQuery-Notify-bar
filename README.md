@@ -106,6 +106,13 @@ and to your html page stylesheet:
     <td>function</td>
     <td>null</td>
   </tr>
+  <tr>
+    <td><strong>position</strong></td>
+    <td>Set the position of notify bar. Possible values are <strong>top</strong>, <strong>bottom</strong>.</td>
+    <td>string</td>
+    <td>"top"</td>
+  </tr>
+  
 </table>
 
 Please visit [the project page](http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/ "the project page") for feedback and other details.
