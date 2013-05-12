@@ -24,9 +24,7 @@ button {
 <h1>Notify Bar test page</h1>
 
     <p>
-      <a href="http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/">
-        Project home
-      </a>
+      <a href="http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/">Project home</a>
       &nbsp;
       <a href="http://github.com/dknight/jQuery-Notify-bar">Download the source</a>
     </p>
@@ -64,6 +62,11 @@ button {
       <div id="onHide"></div>
     </p>
     
+   <p>
+      Test postion<br>
+      <button id="position">Test</button>
+    </p>
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="jquery.notifyBar.js"></script>
     <script>
@@ -90,6 +93,9 @@ button {
       });
       $("#close").click(function () {
         $.notifyBar({ html: "Click 'close' to hide notify bar", close: true, closeOnClick: false });
+      });
+      $("#position").click(function () {
+        $.notifyBar({ html: "At bottom", position: "bottom" });
       });
       $("#events").click(function () {
           $.notifyBar({
