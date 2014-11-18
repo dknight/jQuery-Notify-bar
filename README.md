@@ -7,8 +7,8 @@ Simple plugin (basically it's not a plugin, but widget) to show notify bar (like
 
 ## Usage
 
-<pre><code>$(function () {
-  $.notifyBar({
+<pre><code>jQuery(function () {
+  jQuery.notifyBar({
     html: "Thank you, your settings were updated!",
     delay: 2000,
     animationSpeed: "normal"
@@ -18,8 +18,8 @@ Simple plugin (basically it's not a plugin, but widget) to show notify bar (like
 
 ### Usage position at bottom
 <pre><code>
-$("#close").click(function ( ){
-  $.notifyBar({
+jQuery(function () {
+  jQuery.notifyBar({
     html: "Hi from below!",
     cssClass: "Appear at bottom",
     position: "bottom"
