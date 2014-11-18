@@ -102,7 +102,7 @@
             default:
                 asTime = settings.animationSpeed;
         }
-        if (bar !== 'object') {
+        if (typeof bar !== 'object') {
             $("body").prepend(bar);
         }
         
