@@ -4,6 +4,9 @@ Please visit [the project page](http://www.whoop.ee/posts/2013-04-05-the-resurre
 
 Simple plugin (basically it's not a plugin, but widget) to show notify bar (like on Twitter's webpage). It's very simple to use:
 
+
+## Usage
+
 <pre><code>$(function () {
   $.notifyBar({
     html: "Thank you, your settings were updated!",
@@ -13,9 +16,15 @@ Simple plugin (basically it's not a plugin, but widget) to show notify bar (like
 });
 </code></pre>
 
-and to your html page stylesheet:
-
-<pre><code>&lt;link rel="stylesheet" href="jquery.notifyBar.css"&gt;
+### Usage position at bottom
+<pre><code>
+$("#close").click(function ( ){
+  $.notifyBar({
+    html: "Hi from below!",
+    cssClass: "Appear at bottom",
+    position: "bottom"
+  });
+7});
 </code></pre>
 
 ## Options
@@ -115,4 +124,4 @@ and to your html page stylesheet:
   
 </table>
 
-Please visit [the project page](http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/ "the project page") for feedback and other details.
+Please visit [the project page](http://www.whoop.ee/#projects "the project page") for feedback and other details.

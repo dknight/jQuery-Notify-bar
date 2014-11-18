@@ -1,24 +1,26 @@
 /*
-* Notify Bar - $ plugin
+* Notify Bar - jQuery plugin
 *
-* Copyright (c) 2009-2013 Dmitri Smirnov
+* Copyright (c) 2009-2014 Dmitri Smirnov
 *
 * Licensed under the MIT license:
 * http://www.opensource.org/licenses/mit-license.php
 *
-* Version: 1.4
+* Version: 1.4.1
 *
 * Project home:
-* http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/
+* http://www.whoop.ee/#projects
 */
 (function ($) {
 
+    "use strict";
+
     $.notifyBar = function (options) {
         var rand = parseInt(Math.random() * 100000000, 0),
-            text_wrapper,
+            text_wrapper, asTime,
             bar = {},
             settings = {};
-        
+
         settings = $.extend({
             html           : 'Your message here',
             delay          : 2000,
@@ -48,7 +50,7 @@
             });
         };
 
-        this.fn.hideNB = function (delayed) {
+        this.fn.hideNB = function () {
             if (typeof settings.onBeforeHide === 'function') {
                 settings.onBeforeHide.call();
             }
