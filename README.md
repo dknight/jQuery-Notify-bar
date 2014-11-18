@@ -24,7 +24,7 @@ $("#close").click(function ( ){
     cssClass: "Appear at bottom",
     position: "bottom"
   });
-7});
+});
 </code></pre>
 
 ## Options
