@@ -102,14 +102,12 @@
             default:
                 asTime = settings.animationSpeed;
         }
-        if (typeof bar !== 'object') {
-            $("body").prepend(bar);
-        }
+        $("body").prepend(bar);
         
         // Style close button in CSS file
         if (settings.close) {
             // If close settings is true. Set delay to one billion seconds.
-            // It'a about 31 years - mre than enough for cases when notify bar is used.
+            // It'a about 31 years - mre than enough for cases when notify bar is used :-)
             settings.delay = Math.pow(10, 9);
             bar.append($("<a href='#' class='notify-bar-close'>" + settings.closeText + "</a>"));
             $(".notify-bar-close").click(function (event) {

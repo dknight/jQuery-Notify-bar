@@ -126,7 +126,7 @@ jQuery(function () {
 
 Please visit [the project page](http://www.whoop.ee/#projects "the project page") for feedback and other details.
 
-## MIT License
+##  MIT License
 
 The MIT License (MIT)
 
