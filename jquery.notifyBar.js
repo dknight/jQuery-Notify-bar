@@ -6,7 +6,7 @@
 * Licensed under the MIT license:
 * http://www.opensource.org/licenses/mit-license.php
 *
-* Version: 1.4.1
+* Version: 1.5.0
 *
 * Project home:
 * http://www.whoop.ee/#projects
@@ -28,7 +28,7 @@
             cssClass       : '',
             jqObject       : '',
             close          : false,
-            closeText      : 'Close [X]',
+            closeText      : '&times;',
             closeOnClick   : true,
             closeOnOver    : false,
             onBeforeShow   : null,
