@@ -5,7 +5,7 @@ Please visit [the project page](http://www.whoop.ee/posts/2013-04-05-the-resurre
 Simple plugin (basically it's not a plugin, but widget) to show notify bar (like on Twitter's webpage). It's very simple to use:
 
 ## Installation
-<pre><code>&gt;bower install jqnotifybar</code></pre>
+<pre><code>&gt; bower install jqnotifybar</code></pre>
 
 ## Usage
 
