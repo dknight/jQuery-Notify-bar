@@ -25,8 +25,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.7.1>",
-    "css": "css",
-    "img": "img"
+    "jquery": "1.7.1"
   }
 }
