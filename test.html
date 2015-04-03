@@ -86,7 +86,7 @@ button {
         $.notifyBar({ cssClass: "success", html: "Your data has been changed!" });
       });
       $("#warning").click(function() {
-        $.notifyBar({ cssClass: "warning", html: "Settings aren't changed!" });
+        $.notifyBar({ cssClass: "warning", html: "Settings aren't changed!", delay: 15000 });
       })
       $("#custom").click(function () {
         $.notifyBar({ cssClass: "custom", html: "Your data has been changed!" });
@@ -118,5 +118,6 @@ button {
     });
     
     </script>
+    <img src="img/jq-notify-bar-icons.svg#icon-warning" alt="" width="16" height="16">
 </body>
 </html>

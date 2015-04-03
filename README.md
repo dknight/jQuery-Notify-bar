@@ -1,6 +1,6 @@
 # jQuery Notify bar
 
-Please visit [the project page](http://www.whoop.ee/posts/2013-04-05-the-resurrection-of-jquery-notify-bar/ "the project page") for feedback and other details.
+Please visit [the project page](http://www.whoop.ee/posts/2013/04/05/the-resurrection-of-jquery-notify-bar.html "the project page") for feedback and other details.
 
 Simple plugin (basically it's not a plugin, but widget) to show notify bar (like on Twitter's webpage). It's very simple to use:
 

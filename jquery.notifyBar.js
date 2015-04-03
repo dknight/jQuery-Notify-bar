@@ -1,7 +1,7 @@
 /*
 * Notify Bar - jQuery plugin
 *
-* Copyright (c) 2009-2014 Dmitri Smirnov
+* Copyright (c) 2009-2015 Dmitri Smirnov
 *
 * Licensed under the MIT license:
 * http://www.opensource.org/licenses/mit-license.php
@@ -23,7 +23,7 @@
 
         settings = $.extend({
             html           : 'Your message here',
-            delay          : 2000,
+            delay          : 3000,
             animationSpeed : 200,
             cssClass       : '',
             jqObject       : '',
