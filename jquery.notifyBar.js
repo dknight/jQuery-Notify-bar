@@ -6,8 +6,6 @@
 * Licensed under the MIT license:
 * http://www.opensource.org/licenses/mit-license.php
 *
-* Version: 1.5.1
-*
 * Project home:
 * http://www.whoop.ee/posts/2013/04/05/the-resurrection-of-jquery-notify-bar.html
 */
