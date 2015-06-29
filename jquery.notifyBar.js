@@ -147,5 +147,7 @@
         } else if (settings.position === 'top') {
             bar.addClass('top');
         }
+
+        return bar;
     };
 })(jQuery);
