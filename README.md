@@ -93,6 +93,12 @@ jQuery(function () {
     <td>Boolean</td>
     <td>false</td>
   </tr>
+    <tr>
+    <td><strong>waitingForClose</strong></td>
+    <td>If enabled, notify bar don't close until user presses the close button.</td>
+    <td>Boolean</td>
+    <td>true</td>
+  </tr>
   <tr>
     <td><strong>onBeforeShow</strong></td>
     <td>Callback on before show.</td>

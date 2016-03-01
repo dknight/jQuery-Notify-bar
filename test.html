@@ -92,7 +92,7 @@ button {
         $.notifyBar({ cssClass: "custom", html: "Your data has been changed!" });
       });
       $("#close").click(function () {
-        $.notifyBar({ html: "Click 'close' to hide notify bar", close: true, closeOnClick: false });
+        $.notifyBar({ html: "Click 'close' to hide notify bar", close: true, waitingForClose: true, closeOnClick: false });
       });
       $("#position").click(function () {
         $.notifyBar({ html: "At bottom", position: "bottom" });
