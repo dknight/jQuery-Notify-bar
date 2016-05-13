@@ -77,6 +77,12 @@
   background: transparent url("../img/jq-notify-bar-icons.svg") no-repeat 2px -31px;
 }
 
+/* Style for info */
+.jquery-notify-bar.info {
+  color: #31708f;
+  background-color: #d9edf7;
+}
+
 /* Style for close button */
 .notify-bar-close {
   position:absolute;
