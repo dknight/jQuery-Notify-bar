@@ -1,4 +1,4 @@
-/*
+/**
 * Notify Bar - jQuery plugin
 *
 * Copyright (c) 2009-2016 Dmitri Smirnov
@@ -8,9 +8,37 @@
 *
 * Project home:
 * http://www.whoop.ee/posts/2013/04/05/the-resurrection-of-jquery-notify-bar.html
+*
+* Uses CommonJS, AMD or browser globals to create a jQuery plugin.
+* Ref: https://github.com/umdjs/umd/blob/master/templates/jqueryPlugin.js
 */
-(function ($) {
-
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node/CommonJS
+        module.exports = function( root, jQuery ) {
+            if ( jQuery === undefined ) {
+                // require('jQuery') returns a factory that requires window to
+                // build a jQuery instance, we normalize how we use modules
+                // that require this pattern but the window provided is a noop
+                // if it's defined (how jquery works)
+                if ( typeof window !== 'undefined' ) {
+                    jQuery = require('jquery');
+                }
+                else {
+                    jQuery = require('jquery')(root);
+                }
+            }
+            factory(jQuery);
+            return jQuery;
+        };
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
     'use strict';
 
     $.notifyBar = function (options) {
@@ -154,4 +182,4 @@
 
         return $bar;
     };
-})(jQuery);
+}));
