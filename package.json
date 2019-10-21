@@ -26,6 +26,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": ">=1.7.1"
+    "jquery": ">=3.4.0"
   }
 }
