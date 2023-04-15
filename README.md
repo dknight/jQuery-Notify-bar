@@ -1,3 +1,10 @@
+# Pleae do not use jQuery in 2023
+
+Repo is archived for history.
+
+<hr>
+
+
 # jQuery Notify bar
 
 Please visit [the project page](http://www.whoop.ee/posts/2013/04/05/the-resurrection-of-jquery-notify-bar.html "the project page") for feedback and other details.
