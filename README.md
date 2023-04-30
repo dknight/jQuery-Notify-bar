@@ -2,6 +2,8 @@
 
 Repo is archived for history.
 
+Try a [modern implementations](https://github.com/dknight/xz-notify) based on Web Components.
+
 <hr>
 
 
@@ -21,7 +23,7 @@ Simple plugin (basically it's not a plugin, but widget) to show notify bar (like
     html: "Thank you, your settings were updated!",
     delay: 2000,
     animationSpeed: "normal"
-  });  
+  })
 });
 </code></pre>
 
