@@ -1,4 +1,4 @@
-# Pleae do not use jQuery in 2023
+# Please do not use jQuery in 2023
 
 Repo is archived for history.
 
